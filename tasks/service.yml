@@ -41,3 +41,16 @@
 
 - name: copy in reinstall script
   copy: src=reinstall dest=/usr/local/sbin/reinstall mode=0755 owner=root group=root backup=no
+
+- name: copy requirements file to /var/www/html/requirements.yml - for ansible-pull
+  copy: src={{ req_file_src }} 
+        dest={{ req_file_dest }} 
+        mode=0644 backup=yes
+  tags: requirements_pull
+
+- name: replace URL to github with our local mirror
+  replace: dest={{ req_file_dest }} 
+           regexp='https://github.com'
+           replace='http://{{ pull_install_ip }}'
+           backup=yes
+  tags: requirements_pull

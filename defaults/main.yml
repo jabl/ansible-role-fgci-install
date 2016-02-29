@@ -11,6 +11,9 @@ hosts_file_dest: "/var/www/html/hosts"
 group_vars_src: "group_vars/"
 group_vars_dest: "/var/www/html/group_vars"
 
+req_file_src: "requirements.yml"
+req_file_dest: "/var/www/html/requirements.yml"
+
 ansible_pull_sleep: "10"
 ansible_pull_branch: "production"
 
